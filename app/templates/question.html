@@ -1,0 +1,19 @@
+<h1>{{ question.question_text }}</h1>
+<ul
+
+</ul>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{% url 'vote' question.id %}" method="post">
+  {% csrf_token %}
+  <!-- <p>1.</p>
+  <p>2.</p>
+  <p>3.{{ choice.choice_3 }}</p>
+  <p>4.{{ choice.choice_4 }}</p> -->
+  <button>{{ choice.choice_1 }}</button>
+  <button>{{ choice.choice_2 }}</button>
+  <button>{{ choice.choice_3 }}</button>
+  <button>{{ choice.choice_4 }}</button>
+
+</form>
