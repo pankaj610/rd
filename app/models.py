@@ -6,23 +6,16 @@ from django.utils import timezone
 class Student(models.Model):
     name = models.CharField(max_length=50)
     emailid = models.EmailField(max_length=50)
-    rollno = models.IntegerField()
+    rollno = models.IntegerField(default=0,primary_key=True)
     branch = models.CharField(max_length=5)
-    year = models.IntegerField()
-    contact_no = models.IntegerField()
+    year = models.IntegerField(default=0)
+    # contact_no = models.IntegerField(default=0)
 
     def __str__(self):
         r=str(self.rollno)
         return r
         # return self.IntegerToString(rollno)
 
-class Vote(models.Model):
-     # question = models.ForeignKey(Question, on_delete=models.CASCADE)
-     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-     vote = models.IntegerField()
-
-     def __str__(self):
-         return self.vote
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
@@ -36,6 +29,15 @@ class Question(models.Model):
 
     def ques(self):
         return self.question_text
+
+class Vote(models.Model):
+    student_id = models.IntegerField(default=0)
+    question_id = models.IntegerField(default=0)
+    vote = models.IntegerField(default=0)
+
+    def __str__(self):
+         st_id=str(self.student_id)
+         return st_id
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

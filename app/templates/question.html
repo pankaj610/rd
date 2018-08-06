@@ -11,9 +11,12 @@
   <p>2.</p>
   <p>3.{{ choice.choice_3 }}</p>
   <p>4.{{ choice.choice_4 }}</p> -->
-  <button>{{ choice.choice_1 }}</button>
-  <button>{{ choice.choice_2 }}</button>
-  <button>{{ choice.choice_3 }}</button>
-  <button>{{ choice.choice_4 }}</button>
-
+  <button name="vote" value="1">{{ choice.choice_1 }}</button>
+  <button name="vote" value="2">{{ choice.choice_2 }}</button>
+  <button name="vote" value="3">{{ choice.choice_3 }}</button>
+  <button name="vote" value="4">{{ choice.choice_4 }}</button>
 </form>
+<h3>Your Answer. <i>{{my_vote}}</i></h4>
+{% for i in ques_list %}
+    <a href="{% url 'question' i.id %}">{{i.id}}</a>
+{% endfor %}

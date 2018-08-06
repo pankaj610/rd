@@ -19,7 +19,7 @@ from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', home),
+    path('index/', login),
     path('form/', form),
     path('hello/', hello, name = 'hello'),
     path('index1/', index1, name = 'index1'),
@@ -28,4 +28,6 @@ urlpatterns = [
     path('<int:question_id>/results/',results ,name='results'),
     path('<int:question_id>/vote/', vote, name='vote'),
     path('question/<int:question_id>/', question, name='question'),
+    path('login/', login, name = 'login'),
+    path('queslist/', queslist, name= 'question_list')
 ]
